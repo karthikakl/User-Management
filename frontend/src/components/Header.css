@@ -1,0 +1,58 @@
+/* Make the header stick to the top and span the entire width */
+.header {
+    position: fixed; /* Fixes the header to the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #080808; /* Background color */
+    color: white;
+    padding: 15px 20px; /* Padding for the header */
+    display: flex;
+    justify-content: flex-end; /* Aligns the nav items to the right */
+    align-items: center;
+    z-index: 1000; /* Ensures the header is above other elements */
+    width: 100%; /* Full width */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styling the navigation list */
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 30px; /* Space between nav items */
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Pushes the nav items to the right */
+}
+
+/* Styling the navigation items */
+.nav-item {
+    margin: 0;
+}
+
+/* Navigation links */
+.nav-link {
+    text-decoration: none;
+    color: #f4f4f4; /* Light text color for contrast */
+    font-weight: bold;
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.nav-link:hover {
+    color: #2ecc71; /* Green color on hover */
+}
+
+/* Styling for the button inside the header */
+.btn {
+     /* Logout button color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+

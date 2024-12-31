@@ -1,0 +1,45 @@
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3498db; /* Blue background for the header */
+    color: white;
+  }
+  
+  .header-title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .admin-title {
+    font-size: 24px;
+    color: white;
+    margin: 0;
+  }
+  
+  .logout-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-logout {
+    background-color: #e74c3c; /* Red color for logout button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-logout:hover {
+    background-color: #c0392b; /* Darker red shade on hover */
+  }
+  
+  .btn-logout svg {
+    margin-right: 8px; /* Space between icon and text */
+  }
+  
