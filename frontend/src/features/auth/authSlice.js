@@ -37,18 +37,40 @@ export const login  = createAsyncThunk(
     }
 });
 
+
 export const updateProfilePicture = createAsyncThunk(
-    'auth/uploadProfilePicture',
-    async (profilePicture, thunkAPI) => {
+    'auth/updateProfilePicture', async (data, thunkAPI) => {
         try {
-            const response = await authService.uploadProfilePicture(profilePicture); 
-            return response
+            return await authService.uploadProfilePicture(data.file, data.token);
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            const message = error.response ? error.response.data.message : error.message;
             return thunkAPI.rejectWithValue(message);
         }
     }
 );
+
+export const uploadResume = createAsyncThunk(
+    'auth/uploadResume', async (data, thunkAPI) => {
+        try {
+            return await authService.uploadResume(data.file, data.token);
+        } catch (error) {
+            const message = error.response ? error.response.data.message : error.message;
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+// export const getProfile = createAsyncThunk(
+//     'auth/getProfile',
+//     async (token, thunkAPI) => {
+//         try {
+//             return await authService.fetchProfile(token);
+//         } catch (error) {
+//             const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+//             return thunkAPI.rejectWithValue(message);
+//         }
+//     }
+// );
 
 export const logout = createAsyncThunk('auth/logout', async () => {
     authService.logout(); 
@@ -100,12 +122,46 @@ export const authSlice = createSlice({
                state.isSuccess=false;
                state.message='' 
             }) 
-            .addCase(updateProfilePicture.fulfilled,(state,action)=>{
-                console.log("Update payload:", action.payload);
-                if(state.user){
-                    state.user.profilePicture=action.payload.profilePicture
-                }
+            .addCase(updateProfilePicture.pending, (state) => {
+                state.isLoading = true;
             })
+            .addCase(updateProfilePicture.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(updateProfilePicture.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+            .addCase(uploadResume.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(uploadResume.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(uploadResume.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+            // .addCase(getProfile.pending, (state) => {
+            // state.isLoading = true;
+            // })
+            // .addCase(getProfile.fulfilled, (state, action) => {
+            // state.isLoading = false;
+            // state.isSuccess = true;
+            // state.user = action.payload; // Update user with fetched profile data
+            // })
+            // .addCase(getProfile.rejected, (state, action) => {
+            // state.isLoading = false;
+            // state.isError = true;
+            // state.message = action.payload;
+            // });
+
     }
 });
 

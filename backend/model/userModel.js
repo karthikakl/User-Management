@@ -1,31 +1,30 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
-const userSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
     },
-    email:{
-        type:String,
-        
+    email: {
+        type: String,
     },
-    number:{
-        type:Number,
-        
+    number: {
+        type: Number,
     },
-    password:{
-        type:String,
-        
+    password: {
+        type: String,
     },
-    profilePicture: {  
-        type: String, 
-        default: 'defaultProfilePicture.png' 
+    profilePicture: {
+        type: String,
+        default:''  
     },
-    is_admin:{
-        type:Boolean,
-        deafault:false
-    }
+    resume: {
+        type: String,
+        default:''  
+    },
+    is_admin: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-})
-
-module.exports=mongoose.model('user',userSchema)
+module.exports = mongoose.model('user', userSchema);

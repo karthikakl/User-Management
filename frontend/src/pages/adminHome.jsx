@@ -8,7 +8,7 @@ function AdminHome() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1); // Pagination state
-  const [usersPerPage] = useState(3); // Display 4 users per page
+  const [usersPerPage] = useState(2); // Display 4 users per page
   const navigate = useNavigate();
 
   useEffect(() => {
