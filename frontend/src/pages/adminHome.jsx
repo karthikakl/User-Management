@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import AdminHeader from '../components/AdminHeader';
 
 function AdminHome() {
@@ -30,10 +30,10 @@ function AdminHome() {
     fetchUsers();
   }, [navigate]);
 
-  const adminLogout = () => {
-    localStorage.removeItem('adminToken');
-    navigate('/adminLogin');
-  };
+  // const adminLogout = () => {
+  //   localStorage.removeItem('adminToken');
+  //   navigate('/adminLogin');
+  // };
 
   const addUser = () => {
     navigate('/addUser');
@@ -98,7 +98,7 @@ function AdminHome() {
             <table className="styled-table">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  
                   <th>Name</th>
                   <th>Email</th>
                   <th>Actions</th>
@@ -107,7 +107,7 @@ function AdminHome() {
               <tbody>
                 {currentUsers.map((user) => (
                   <tr key={user._id}>
-                    <td>{user._id}</td>
+                    
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
